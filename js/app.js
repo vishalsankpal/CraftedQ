@@ -61,5 +61,16 @@ jQuery(document).ready(function($){
     $(window).resize(function() {
         owlInitialize();
     });
-    
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 100) {
+            $('a.scrollTop').show();
+        }
+        else {
+            $('a.scrollTop').hide();
+        }
+    });
+    $("a.scrollTop").click(function() {
+        $("html, body").animate({ scrollTop: 0 });
+        return false;
+    });
 })
