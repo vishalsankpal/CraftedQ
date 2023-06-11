@@ -1,0 +1,1086 @@
+$primary:#01579B;
+$white:#fff;
+$dark:#000;
+$dark-grey:#1C262B;
+$light-grey:#676767;
+$light-dark:#444444;
+$grey:#282A2B;
+$cta-button:#24282C;
+$dark-black:#112200;
+$services-bg:#F0F5F9;
+$service-card-info:#272A2D;
+$benefits-bg:#24282B;
+$extension-title:#2B3135;
+$testimonial-bg:#24282A;
+$navigation-link:#202020;
+$brand-title: #373737;
+$carousel-title: #2E2E2E;
+$reviwer-text:#6B6B78;
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;//it resets the fonts of all elements.
+}
+
+html,
+html:focus-within{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+// Font family
+@font-face {
+    font-family: 'Gilroy-regular';
+    src: url('./fonts/Gilroy-Regular.ttf') format('truetype'); /* Pretty Modern Browsers */
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Gilroy-bold';
+    src: url('./fonts/Gilroy-Bold.ttf') format('truetype'); /* Pretty Modern Browsers */
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Gilroy-extrabold';
+    src: url('./fonts/Gilroy-ExtraBold.ttf') format('truetype'); /* Pretty Modern Browsers */
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Gilroy-medium';
+    src: url('./fonts/Gilroy-Medium.ttf') format('truetype'); /* Pretty Modern Browsers */
+    font-display: swap;
+}
+
+
+.extrabold{
+    font-family: 'Gilroy-extrabold';
+    font-weight: 800;
+}
+.regular{
+    font-family: 'Gilroy-regular';
+    font-weight: 400;
+}
+.bold{
+    font-family: 'Gilroy-bold';
+    font-weight: 700;
+}
+.medium{
+    font-family: 'Gilroy-medium';
+    font-weight: 600;
+}
+.fz-16{
+    font-size: 1rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.02em;
+}
+.fz-18{
+    font-size: 1.125rem;
+    line-height: 1.313rem;
+    letter-spacing: 0.02em;
+}
+.fz-24{
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+}
+.section-title-style{
+    //font-family: 'Gilroy-extrabold';
+    //font-weight: 800;
+    @extend .extrabold;
+    color: $primary;
+    text-align: center;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: 0.02em;
+    @media only screen and (max-width: 768px){
+        font-size: 1.75rem;
+        line-height: 2.188rem;
+    }
+}
+// button mixin
+@mixin button-mixin($color,$font-color,$border-color,$after-bg,$hover-btn-border,$shadow){
+    background-color: $color;
+    color: $font-color;
+    border: 1px solid $border-color;
+    box-shadow: $shadow;
+    &::after{
+        background-color: $after-bg;
+    }
+    &:hover{
+        border: 1px solid $hover-btn-border;
+        color: $color;
+        svg{
+            path{
+                fill:$color;
+            }
+        }
+    }
+}
+// ellipses mixin
+@mixin ellipse($line-clamp){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $line-clamp;
+    -webkit-box-orient: vertical;
+}
+
+.custom-btn{
+    min-height: 64px;
+    @extend .regular,.fz-18;
+    position: relative;
+    span{
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        margin-left: 1rem;
+        &.text-wrapper{
+            margin-left: 0;
+        }
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0;
+        transition: .3s ease-in all;
+    }
+    &:hover{
+        &::after{
+            width: 100%;
+            transition: .3s ease-in all;
+        }
+    }
+}
+
+// Header start
+header{
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    padding-top: 2.188rem;
+    a{
+        display: inline-block;
+    }
+    .mobile-toggler{
+        position: relative;
+        &::after,
+        &::before{
+            content: '';
+            position: absolute;
+            height: 2.5px;
+            width: 17px;
+            background-color: #24272A;
+        }
+        &::after{
+            right: 0;
+        }
+        &::before{
+            right: 5px;
+            top: 9px;
+        }
+        @media only screen and (min-width: 768px){
+            display: none;
+        }
+    }
+    .nav-wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .nav-container{
+            @media only screen and (max-width: 768px){
+                display: none;
+            }
+            nav{
+                ul{
+                    list-style: none;
+                    padding: 0;
+                    margin-bottom: 0;
+                    display: flex;
+                    align-items: center;
+                    -moz-column-gap: 4rem;
+                         column-gap: 4rem;
+                    li{
+                        &.navigation-item{
+                            .navigation-link{
+                                @extend .fz-18,.regular;
+                                color: $navigation-link;
+                                letter-spacing: normal;
+                                line-height: 1.125rem;
+                                text-decoration: none;
+                            }
+                        }
+                        button{
+                            @extend .fz-18,.regular;
+                            color: $navigation-link;
+                            letter-spacing: normal;
+                            line-height: 1.125rem;
+                            border: 1px solid $navigation-link;
+                            min-height: 48px;
+                            padding: 0 1.625rem;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// Header end
+// mobile nav start
+.mobile-nav{
+    position: -webkit-sticky;
+    position: sticky;
+    display: none;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: 2;
+    background: $white;
+    transition: .3s ease-in-out height;
+    &.active{
+        display: block;
+        height: 102vh;
+        transition: .3s ease-in-out height;
+        nav{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            ul{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                row-gap: 20px;
+                display: flex;
+                flex-direction: column;
+                li{
+                    text-align: center;
+                    &.navigation-item{
+                        .navigation-link{
+                            @extend .fz-18,.regular;
+                            color: $navigation-link;
+                            letter-spacing: normal;
+                            line-height: 1.125rem;
+                            text-decoration: none;
+                        }
+                    }
+                    button{
+                        @extend .fz-18,.regular;
+                        color: $navigation-link;
+                        letter-spacing: normal;
+                        line-height: 1.125rem;
+                        border: 1px solid $navigation-link;
+                        min-height: 48px;
+                        padding: 0 1.625rem;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    .nav-close{
+        position: relative;
+        top: 20px;
+        right: 10px;
+        &::after,
+        &::before{
+            content: '';
+            position: absolute;
+            height: 2.5px;
+            width: 17px;
+            background-color: #24272A;
+        }
+        &::after{
+            right: 0;
+            rotate: -130deg;
+        }
+        &::before{
+            right: 0;
+            rotate: 130deg;
+        }
+    }
+}
+// mobile nav end
+// Banner start
+section.first-view-port-section{
+    background-color: #E1F2FF;
+    position: relative;
+    //min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 147px;
+    padding-bottom: 176px;
+    overflow: hidden;
+    @media only screen and (max-width: 768px){
+        padding-bottom: 237px;
+    }
+    .banner-wrapper{
+        .row{
+            @media only screen and (max-width:768px){
+                row-gap: 3.875rem;
+            }
+            &>.col-lg-6:first-child{
+                @media only screen and (min-width: 768px){
+                    padding-left: 30px;
+                }
+            }
+        }
+        .main-title{
+            @extend .section-title-style;
+            text-align: left;
+            margin-bottom: 2rem;
+            @media only screen and (max-width: 768px){
+                text-align: center;
+                margin-bottom: .5rem;
+            }
+        }
+        .main-sub-title{
+            @extend .fz-24,.extrabold;
+            color: $light-dark;
+            line-height: 1.813rem;
+            text-transform: capitalize;
+            margin-bottom: 2rem;
+            @media only screen and (max-width: 768px){
+                text-align: center;
+                margin-bottom: 1.25rem;
+            }
+        }
+        .main-information{
+            @extend .regular;
+            font-size: 1.188rem;
+            line-height: 1.813rem;
+            letter-spacing: 0.04em;
+            color: $grey;
+            margin-bottom: 2.5rem;
+            @media only screen and (max-width: 768px){
+                font-size: 1rem;
+                line-height: 1.5rem;
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+        }
+        .cta-wrapper{
+            @media only screen and (max-width: 768px){
+                text-align: center;
+            }
+            .explore-pricing{
+                @extend .custom-btn;
+                @include button-mixin($cta-button, $white,$cta-button,$white,$white,0px 2px 5px rgba(2, 46, 81, 0.3));
+                padding-left: 1.563rem;
+                padding-right: 2rem;
+                
+            }
+        }
+        .banner-img-wrapper{
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+            z-index: 1;
+            @media only screen and (max-width: 992px){
+                justify-content: center;
+            }
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+    .circle{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        @media only screen and (max-width: 768px){
+            &.desktop{
+                display: none;
+            }
+        }
+    }
+    .circle-mobile{
+        position: absolute;
+        bottom: 50px;
+        right: 0;
+        @media only screen and (min-width: 768px){
+            display: none;
+        }
+    }
+}
+// Banner end
+// Woo-commerce section start
+.woo-commerce-section{
+    position: relative;
+    top: -55px;
+    @media only screen and (max-width: 768px){
+        top: -140px;
+    }
+    .woo-commerce-section-wrapper{
+        background-color: $white;
+        box-shadow: 2.85351px 1.92528px 17.2105px rgba(1, 87, 155, 0.12);
+        border-radius: 5px;
+        padding: 25px 0;
+        @media only screen and (max-width: 768px){
+            padding: 2.5rem 2rem;
+            max-width: 267px;
+            margin: 0 auto;
+            .row{
+                row-gap: 2rem;
+            }
+        }
+        .row>.col-md-4{
+            position: relative;
+            &:not(:last-child){
+                @media only screen and (min-width: 768px){
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        height: 100%;
+                        width: 1px;
+                        background-color: $dark-black;
+                    }
+                }
+                @media only screen and (max-width: 768px){
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        transform: translate(-50%);
+                        left: 50%;
+                        height: 1px;
+                        width: 79px;
+                        background-color: $dark;
+                    }
+                }
+            }
+
+            .woo-commerce-grid-wrapper{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .count{
+                    @extend .extrabold;
+                    color: $dark-black;
+                    font-size: 1.721rem;
+                    margin-bottom: 0.063rem;
+                    line-height: 2.125rem;
+                    letter-spacing: 0.04em;
+                    @media only screen and (max-width: 768px){
+                        margin-bottom: 0.938rem;
+                    }
+                }
+                .grid-text{
+                    @extend .regular;
+                    color: $dark-black;
+                    font-size: 1rem;
+                    letter-spacing: 0.04em;
+                    line-height: 1.5rem;
+                    margin-bottom: 0;
+                    @media only screen and (max-width: 768px){
+                        margin-bottom: 2rem;
+                        font-size: 1.125rem;
+                        line-height: 1.5rem;
+                        color: $dark;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+// Woo-commerce section end
+// Brands section start
+.global-brands-section{
+    padding-top: 4.625rem;
+    padding-bottom: 6.813rem;
+    @media only screen and (max-width: 768px){
+        padding-top: 0;
+        margin-top: -68px;
+    }
+    .global-section-title{
+        @extend .fz-24,.regular;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        color: $brand-title;
+        @media only screen and (max-width: 768px){
+            font-size: 1.125rem;
+            line-height: 2rem;
+        }
+    }
+    .brand-row{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        -webkit-filter: brightness(0.5);
+                filter: brightness(0.5);
+        .brand-wrapper{
+            @media only screen and (max-width: 992px){
+                img{
+                    height: 35px;
+                    width: 100%;
+                    -o-object-fit: contain;
+                       object-fit: contain;
+                }
+            }
+        }
+        @media only screen and (max-width: 992px){
+            .owl-dots{
+                display: none;
+            }
+        }
+    }
+}
+// Brands section end
+// services section start
+.services-section{
+    background-color: $services-bg;
+    padding: 6rem 0;
+    @media only screen and (max-width: 768px){
+        padding: 4.375rem 0 8.563rem;
+    }
+    .section-title{
+        @extend .section-title-style;
+        margin-bottom: 4.5rem;
+        span{
+            display: inline-block;
+            max-width: 776px;
+        }
+        @media only screen and (max-width: 768){
+            margin-bottom: 3rem;
+        }
+    }
+    .services-section-row{
+        
+        row-gap: 2rem;
+        justify-content: center;
+        @media only screen and (min-width: 992px){
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+        &>*{
+            @media only screen and (min-width: 992px){
+                padding-right: 1rem;
+                padding-left: 1rem;
+            }
+            .services-grid-wrapper{
+                background-color: $white;
+                border: 1px solid rgba(205, 205, 205, 0.6);
+                border-radius: 5px;
+                padding: 3rem 1.313rem;
+                @media only screen and (max-width: 768px){
+                    padding: 2rem;
+                }
+                .services-grid-img-wrapper{
+                    display: grid;
+                    justify-content: center;
+                    margin-bottom: 2rem;
+                    @media only screen and (max-width: 768px){
+                        margin-bottom: 1.688rem;
+                    }
+                    img{
+                        max-width: 100%;
+                    }
+                }
+                .services-grid-title{
+                    text-align: center;
+                    margin-bottom: 1rem;
+                    @extend .fz-24,.bold;
+                    line-height: 1.688rem;
+                    color: $service-card-info;
+                    min-height: 54px;
+                    @include ellipse(2);
+                    @media only screen and (max-width: 768px){
+                        font-size: 1.25rem;
+                        margin-bottom: 1.5rem;
+                        line-height: 1.813rem;
+                    }
+                }
+                .services-grid-information{
+                    text-align: center;
+                    @extend .regular,.fz-16;
+                    color: $service-card-info;
+                    margin-bottom: 0;
+                    min-height: 168px;
+                    @include ellipse(6);
+                    @media only screen and (max-width: 768px){
+                        line-height: 1.375rem;
+                        min-height: 132px;
+                    }
+                }
+            }
+        }
+    }
+    .service-pricing-button-wrapper{
+        margin-top: 4.5rem;
+        display: grid;
+        place-items: center;
+        @media only screen and (max-width: 768px){
+            margin-top: 3rem;
+        }
+        .service-pricing-btn{
+            @extend .custom-btn;
+            @include button-mixin($primary, $white,$primary,$white,$white,0px 2px 5px rgba(2, 46, 81, 0.3));
+            padding-left: 2.5rem;
+            padding-right: 2rem;
+            
+        }
+    }
+}
+// services section end
+// Store benefits start
+.woo-commerce-store-benefits-section{
+    background-color: $benefits-bg;
+    padding: 6rem 0;
+    @media only screen and (max-width: 768){
+        padding: 4.5rem 0 8.5rem;
+    }
+    .section-title{
+        @extend .section-title-style;
+        color: $white;
+        margin-bottom: 4.5rem;
+        @media only screen and (max-width: 768px){
+            max-width: 77%;
+            margin: 0 auto 3rem;
+        }
+        @media only screen and (max-width: 375px){
+            max-width: 90%;
+        }
+    }
+    .woo-commerce-store-benefits-row{
+        margin-left: -.5rem;
+        margin-right: -.5rem;
+        &>*{
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+    }
+    .benefits-wrapper{
+        padding: 2rem;
+        .benefits-img-wrapper{
+            display: grid;
+            place-items: center;
+            margin-bottom: 2rem;
+        }
+        .benefits-title{
+            @extend .fz-24,.medium;
+            color: $white;
+            text-align: center;
+            line-height: 1.688rem;
+            margin-bottom: 1.5rem;
+            @include ellipse(1);
+        }
+        .benefits-information{
+            margin-bottom: 0;
+            color: $white;
+            @extend .fz-16,.regular;
+            text-align: center;
+            @include ellipse(3);
+            max-height: 84px;
+            @media only screen and (max-width: 768px){
+                line-height: 1.5rem;
+            }
+        }
+    }
+}
+// Store benefits end
+// WooCommerce extension section start
+.woo-commerce-extension-section{
+    padding: 8rem 0;
+    @media only screen and (max-width: 768px){
+        padding: 4rem 0 5.75rem;
+    }
+    .woo-commerce-extension-section-title{
+        @extend .section-title-style;
+        color: $extension-title;
+        margin-bottom: 6rem;
+        @media only screen and (max-width: 768px){
+            max-width: 90%;
+            margin: 0 auto 4.813rem;
+        }
+    }
+    .extension-wrapper{
+        max-width: 940px;
+        margin: 0 auto;
+
+        .row{
+            justify-content: center;
+            >*{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img{
+                    max-width: 100%;
+                    height: auto;
+                }
+                &.google-analytics{
+                    order: 2;
+                }
+            }
+        }
+    }
+}
+// WooCommerce extension section end
+// Build your online store section start
+.build-your-online-store-section{
+    padding: 6rem 0;
+    background-color: $primary;
+    @media only screen and (max-width: 768px){
+        padding:4.5rem 0 7.563rem;
+    }
+    .build-your-online-store-wrapper{
+        max-width: 768px;
+        margin: 0 auto;
+        .section-title{
+            @extend .section-title-style;
+            color: $white;
+            font-size: 3.5rem;
+            line-height: 4rem;
+            margin-bottom: 2.5rem;
+            @media only screen and (max-width: 768px){
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        .build-your-online-store-request-to-quote{
+            @extend .regular;
+            font-size: 1.25rem;
+            line-height: 1.813rem;
+            text-align: center;
+            color: #BAE1FF;
+            margin-bottom: 4rem;
+            @media only screen and (max-width: 768px){
+                font-size: 1rem;
+                line-height: 1.688rem;
+                margin-bottom: 3rem;
+            }
+            a{
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+        form{
+            .row{
+                margin-left: -10px;
+                margin-right: -10px;
+                &>*{
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+            .form-group{
+                margin-bottom: 1.5rem;
+                @media only screen and (max-width: 768px){
+                    margin-bottom: 1.25rem;
+                }
+            }
+            label{
+                @extend .fz-16, .regular;
+                color: $white;
+                margin-bottom: .5rem;
+            }
+            input,
+            textarea,
+            select{
+                background: #F9F9F9;
+                border-radius: 5px;
+                min-height: 48px;
+                color: $dark;
+            }
+            select{
+                -webkit-appearance: none;
+                   -moz-appearance: none;
+                        appearance: none;
+                background-image: url(../assets/down-arrow.png);
+                background-repeat: no-repeat;
+                background-size: auto;
+                background-position: 95%;
+
+            }
+            textarea{
+                min-height: 155px;
+            }
+            .form-info-text{
+                margin-top: 2.5rem;
+                text-align: center;
+                @extend .regular;
+                font-size: 1.125rem;
+                line-height: 1.813rem;
+                letter-spacing: .02em;
+                margin-bottom: 2.5rem;
+                color: $white;
+                a{
+                    color: $white;
+                }
+                @media only screen and (max-width: 768px){
+                    margin-top: 1.75rem;
+                    margin-bottom: 1.5rem;
+                }
+            }
+            .schedule-consultation{
+                @extend .custom-btn;
+                @include button-mixin($white, #333333,$white,#333333,#333333,0px 2px 5px rgba(2, 46, 81, 0.3));
+                padding-left: 2.5rem;
+                padding-right: 2rem;
+            }
+        }
+    }
+}
+// Build your online store section end
+// testimonial section start
+.testimonial-section{
+    padding: 6rem 0;
+    background-color: $testimonial-bg;
+    @media only screen and (max-width: 768px){
+        padding: 4.5rem 0 6.188rem;
+    }
+    .section-title{
+        @extend .section-title-style;
+        color: $white;
+        margin-bottom: 4.5rem;
+        @media only screen and (max-width: 768px){
+            max-width: 79%;
+            margin: 0 auto 4rem;
+        }
+    }
+    .testimonial-wrapper{
+        .owl-carousel{
+            .item{
+                background-color: $white;
+                padding: 1.5rem;
+                box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.08);
+                border-radius: 5px;
+                .review-title{
+                    margin-bottom: 1.188rem;
+                    h3.title{
+                        @extend .fz-24;
+                        color: $carousel-title;
+                        margin-bottom: 0;
+                    }
+                }
+                .review-abbr{
+                    @extend .regular, .fz-16;
+                    color:$reviwer-text;
+                    line-height: 1.875rem;
+                    margin-bottom: 1.188rem;
+                }
+                .author-details{
+                    display: flex;
+                    .author-img-wrapper{
+                        flex: 0 0 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        img{
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    }
+                    .author-name-position{
+                        flex: 1;
+                        padding-left: 1rem;
+                        .author-name{
+                            @extend .bold ,.fz-16;
+                            color: $carousel-title;
+                            line-height: 1.125rem;
+                            margin-bottom: 0.5rem;
+                        }
+                        .author-position{
+                            @extend .regular ,.fz-18;
+                            color: $reviwer-text;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .owl-item{
+            transform: scale(.9);
+            &.active.center{
+                transform: scale(1);
+            }
+        }
+        .owl-nav{
+            display: flex;
+            justify-content: center;
+            -moz-column-gap: 22.5px;
+                 column-gap: 22.5px;
+            margin-top: 4rem;
+            @media only screen and (max-width: 768px){
+                display:none;
+            }
+            button{
+                height: 48px;
+                width: 48px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                background: #313A41;
+                position: relative;
+                border-radius: 0;
+                border: 1px solid #313A41;
+                span{
+                    font-size: 2.4rem;
+                    position: absolute;
+                    top: 43%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    line-height: 100%;
+                    color: $white;
+                }
+                &.disabled{
+                    border: 1px solid #8D8D8D;
+                    cursor: no-drop;
+                    span{
+                        color: #8D8D8D;
+                    }
+                }
+            }
+        }
+    }
+}
+// testimonial section end
+// Frequntly asked question start
+.frequently-asked-question-section{
+    padding: 6rem 0;
+    @media only screen and (max-width: 768px){
+        padding: 4.5rem 0;
+    }
+    .section-title{
+        @extend .section-title-style;
+        color: $dark;
+        margin-bottom: 4.5rem;
+        @media only screen and (max-width: 768px){
+            margin: 0 auto 3.5rem;
+            max-width: 60%;
+        }
+        @media only screen and (max-width: 375px){
+            max-width: 72%;
+        }
+    }
+    .faq-wrapper{
+        max-width: 870px;
+        margin: 0 auto;
+        @media only screen and (max-width: 768px){
+            padding: 0 .5rem;
+        }
+        .accordion-item{
+            border-radius: 0;
+            border: none;
+            
+            &:not(:first-child){
+                padding-top: 2.5rem;
+                @media only screen and (max-width: 768px){
+                    padding-top: 2rem;
+                }
+            }
+            &:not(:last-child){
+                padding-bottom: 2.5rem;
+                border-bottom: 1px solid #BFBFBF;
+                @media only screen and (max-width: 768px){
+                    padding-bottom: 2rem;
+                }
+            }
+            .accordion-header{
+                .accordion-button{
+                    padding: 0;
+                    background-color: $white;
+                    box-shadow: none;
+                    @extend .fz-24,.extrabold;
+                    color: $dark;
+                    &::after{
+                        background-image: url(../assets/faq-arrow.png);
+                    }
+                    @media only screen and (max-width: 768px){
+                        font-size: 1.125rem;
+                        line-height: 1.5rem;
+                    }
+                }
+            }
+            .accordion-collapse{
+                .accordion-body{
+                    padding: 1.125rem 0 0;
+                    width: 93%;
+                    @extend .fz-16,.regular;
+                    color: $light-grey;
+                    letter-spacing: 0.04em;
+                    @media only screen and (max-width: 768px){
+                        padding-top: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+}
+// Frequntly asked question end
+// Footer start
+footer{
+    background: $dark-grey;
+    padding: 4rem 0;
+    .footer-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media only screen and (max-width: 992px){
+            flex-direction: column;
+            align-items: flex-start;
+            .footer-item-wrapper{
+                &:last-child{
+                    order: 0;
+                    margin-bottom: 3.125rem;
+                    margin-left: -10px;
+                }
+                &:nth-child(3){
+                    order: 3;
+                    margin-bottom: 1.25rem;
+                }
+                &:nth-child(2){
+                    order: 2;
+                    margin-bottom: 1.25rem;
+                }
+                &:first-child{
+                    order: 4;
+
+                }
+            }
+        }
+        .footer-item-wrapper{
+            p,
+            a{
+                color: $white;
+                @extend .fz-24,.regular;
+                text-decoration: none;
+                margin-bottom: 0;
+                .copy{
+                    margin-right: 1rem;
+                }
+            }
+            ul{
+                padding: 0;
+                display: flex;
+                margin-bottom: 0;
+                list-style: none;
+                li{
+                    a{
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
+// Footer end
