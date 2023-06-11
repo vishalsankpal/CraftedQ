@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
         loop:false,
         nav:true,
         navigation : true,
-        center: true,
+        
         dots: false,
         responsive:{
             0:{
@@ -12,6 +12,7 @@ jQuery(document).ready(function($){
                 stagePadding: 10,
                 nav:false,
                 navigation : false,
+                center: true,
             },
             767:{
                 items:2,

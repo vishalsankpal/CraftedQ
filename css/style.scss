@@ -725,8 +725,10 @@ section.first-view-port-section{
                     max-width: 100%;
                     height: auto;
                 }
-                &.google-analytics{
-                    order: 2;
+                @media only screen and (max-width: 767px){
+                    &.google-analytics{
+                        order: 2;
+                    }
                 }
             }
         }
@@ -907,10 +909,12 @@ section.first-view-port-section{
                 }
             }
         }
-        .owl-item{
-            transform: scale(.9);
-            &.active.center{
-                transform: scale(1);
+        @media only screen and (max-width: 768px){
+            .owl-item{
+                transform: scale(.9);
+                &.active.center{
+                    transform: scale(1);
+                }
             }
         }
         .owl-nav{
