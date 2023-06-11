@@ -32,3 +32,6 @@ Benfits are displayed in 4 columns for desktop view, for Ipad view 2 columns and
 
 //Implementation factors.
 Created mixins , extends for reducing the css and for making easy development.In feature and changes are required then we need to do changes at only one place and it will reflect in thoughout the site.
+
+Main focused area.
+Hosted application on netlify. After every PR merge build will trigger and changes will reflect in first 5mins.
