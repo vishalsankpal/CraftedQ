@@ -74,4 +74,18 @@ jQuery(document).ready(function($){
         $("html, body").animate({ scrollTop: 0 });
         return false;
     });
+    if($(window).width() < 992){
+        $('.dropdown').click(function(){
+            $('.sub-dropdown').css({
+                'display':'block !important',
+                'position': 'absolute',
+                'background': '#fff',
+                'border-radius': '5px',
+                'width': '200px',
+                'padding': '10px',
+                'z-index': '17',
+                'top': '50px'
+            })
+        })
+    }
 })
